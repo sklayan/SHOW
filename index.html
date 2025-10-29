@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目导航中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-color: #f8f9fa; /* 备用背景色 */
+        }
+        
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .card-overlay {
+            opacity: 1;
+        }
+        
+        .visit-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .visit-btn:hover {
+            background: #2980b9;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .card-content p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .tech-tag {
+            background: #ecf0f1;
+            color: #34495e;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #7f8c8d;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        /* 图标样式作为图片备用 */
+        .icon-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>计科2301茹意翔作品展示</h1>
+            <p class="subtitle"></p>
+        </header>
+        
+        <div class="projects-grid">
+            <div class="project-card" onclick="navigateTo('caidan')">
+                <div class="card-image">
+                    <img src="./images/caidan-preview.png" alt="菜单应用预览" style="width:100%;height:100%;object-fit:cover;" 
+                         onerror="this.style.display='none'; document.getElementById('caidan-fallback').style.display='flex';">
+                    <div class="card-overlay" id="caidan-fallback" style="display:none; background: linear-gradient(135deg, #3498db, #2980b9);">
+                        <div class="icon-fallback">📱</div>
+                    </div>
+                    <div class="card-overlay">
+                        <button class="visit-btn">访问项目</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>菜单应用</h3>
+                    <p>一个实用的菜单管理系统，可以浏览、搜索和筛选各种菜品。</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" onclick="navigateTo('dolist')">
+                <div class="card-image">
+                    <img src="./images/dolist-preview.png" alt="待办事项预览" style="width:100%;height:100%;object-fit:cover;" 
+                         onerror="this.style.display='none'; document.getElementById('dolist-fallback').style.display='flex';">
+                    <div class="card-overlay" id="dolist-fallback" style="display:none; background: linear-gradient(135deg, #2ecc71, #27ae60);">
+                        <div class="icon-fallback">✅</div>
+                    </div>
+                    <div class="card-overlay">
+                        <button class="visit-btn">访问项目</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>待办事项</h3>
+                    <p>简洁高效的任务管理工具，帮助您规划和管理日常任务。</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" onclick="navigateTo('mima')">
+                <div class="card-image">
+                    <img src="./images/mima-preview.png" alt="密码管理预览" style="width:100%;height:100%;object-fit:cover;" 
+                         onerror="this.style.display='none'; document.getElementById('mima-fallback').style.display='flex';">
+                    <div class="card-overlay" id="mima-fallback" style="display:none; background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                        <div class="icon-fallback">🔒</div>
+                    </div>
+                    <div class="card-overlay">
+                        <button class="visit-btn">访问项目</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>密码管理</h3>
+                    <p>安全的密码存储和管理工具，保护您的在线账户安全。</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" onclick="navigateTo('quiz')">
+                <div class="card-image">
+                    <img src="./images/quiz-preview.png" alt="问答测试预览" style="width:100%;height:100%;object-fit:cover;" 
+                         onerror="this.style.display='none'; document.getElementById('quiz-fallback').style.display='flex';">
+                    <div class="card-overlay" id="quiz-fallback" style="display:none; background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+                        <div class="icon-fallback">❓</div>
+                    </div>
+                    <div class="card-overlay">
+                        <button class="visit-btn">访问项目</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>问答测试</h3>
+                    <p>互动式问答系统，测试您的知识并查看即时结果。</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" onclick="navigateTo('register')">
+                <div class="card-image">
+                    <img src="./images/register-preview.png" alt="注册表单预览" style="width:100%;height:100%;object-fit:cover;" 
+                         onerror="this.style.display='none'; document.getElementById('register-fallback').style.display='flex';">
+                    <div class="card-overlay" id="register-fallback" style="display:none; background: linear-gradient(135deg, #f39c12, #d35400);">
+                        <div class="icon-fallback">📝</div>
+                    </div>
+                    <div class="card-overlay">
+                        <button class="visit-btn">访问项目</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3>注册表单</h3>
+                    <p>用户友好的注册界面，包含表单验证和提交功能。</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>所有项目已部署在 Vercel 上 &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        function navigateTo(project) {
+            window.location.href = `./${project}/index.html`;
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.card-image img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const projectName = this.closest('.project-card').getAttribute('onclick').match(/'([^']+)'/)[1];
+                    const fallback = document.getElementById(`${projectName}-fallback`);
+                    if (fallback) {
+                        fallback.style.display = 'flex';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

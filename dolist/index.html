@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div class="app">
+        <header>
+            <h1> </h1><i class="fa-solid fa-check-circle"></i>
+            My Task<h1></h1>
+        </header>
+    
+    
+    <div class="todo-input">
+        <input type="text" id="todo-input" placeholder="What do you need to do" />
+        <button id="add-task">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+
+    <div class="filter-container">
+    <span class="filter-btn active" data-filter="all">ALL</span>
+    <span class="filter-btn" data-filter="active">ACTIVE</span>
+    <span class="filter-btn" data-filter="completed">COMPLETED</span>
+    </div>
+
+    <div class="todo-container">
+        <ul id="todo-list">
+            <!--<li class="titem">
+                <label class="chectbox-container">
+                    <input type="checkbox" class="tcheckbox">
+                    <span class="checkmark"></span>
+                </label>
+                <span class="titem-text">Buy me a coffee</span>
+                <button class="detele-btn">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </li>-->
+        </ul>
+        <div class="empty-state hidden">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <p>No Tasks here yet!!!</p>
+        </div>  
+    </div>
+
+    <footer>
+        <p id="item-left">0 items left</p>
+        <button id="clear-completed">Clear completed</button>
+    </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
